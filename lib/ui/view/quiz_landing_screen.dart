@@ -1,11 +1,12 @@
 import 'package:education_app/ui/shared/app_colors.dart';
 import 'package:education_app/ui/view/quiz_screen.dart';
 import 'package:flutter/material.dart';
-
+import '../../core/view_models/user_view_model.dart';
 import '../shared/text_styles.dart';
 
 class QuizLandingScreen extends StatelessWidget {
-  const QuizLandingScreen({Key? key}) : super(key: key);
+  final UserViewModels userViewModel;
+  const QuizLandingScreen({Key? key, required this.userViewModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class QuizLandingScreen extends StatelessWidget {
         ),
         actions: [
           Text(
-            '999',
+            userViewModel.getPoints.toString(),
             style: TextStyles.title,
           ),
           const SizedBox(
@@ -45,12 +46,10 @@ class QuizLandingScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Time to test your knowledge and earn points',
-              ),
-              Text('Earn Up to 10 points'),
-              Text('Race against time and earn 1 point for every correct answer'),
-              Text('You have 2 minutes to answer 10 questions'),
+              const Text('Time to test your knowledge and earn points'),
+              const Text('Earn Up to 10 points'),
+              const Text('Race against time and earn 1 point for every correct answer'),
+              const Text('You have 2 minutes to answer 10 questions'),
               Container(
                 height: 50,
                 width: 320,
@@ -58,7 +57,7 @@ class QuizLandingScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.secondaryColor,
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'This quiz is about Mathematics',
                     style: TextStyle(color: Colors.white),
@@ -67,7 +66,12 @@ class QuizLandingScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => QuizScreen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuizScreen(userViewModel: userViewModel),
+                    ),
+                  );
                 },
                 child: Container(
                   height: 50,
@@ -76,7 +80,7 @@ class QuizLandingScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.primaryColor,
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Start Quiz',
                       style: TextStyle(color: Colors.white),

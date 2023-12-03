@@ -18,10 +18,10 @@ class AchievementsScreen extends StatelessWidget {
       body: Center(
         child: GridView.builder(
           shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 50),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 50),
           itemBuilder: (context, index) => Column(
             children: [
-              Container(
+              SizedBox(
                 height: 80,
                 width: 80,
                 child: Image.asset('assets/${index + 1}.png'),

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-// import '../enums/user_enums.dart';
+import '../enums/user_enums.dart';
 
 class UserViewModels extends ChangeNotifier {
   late int _points;
   int get getPoints => _points;
   String name = 'Abdslem yajour';
-  // Division division = Division.Bronze;
+  Division division = Division.Bronze;
 
 
   UserViewModels() {
-    _points = 1000;
-    // division = Division.Gold;
+    _points = 600;
+    division = Division.Gold;
   }
 
   void addPoints(int value) {
@@ -24,9 +24,9 @@ class UserViewModels extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void changeDivision(Division value) {
-    // division = value;
-    // notifyListeners();
-  // }
+  void changeDivision(Division value) {
+    division = value;
+    notifyListeners();
+  }
 
 }

@@ -1,108 +1,250 @@
+import 'package:education_app/core/enums/user_enums.dart';
 import 'package:education_app/ui/view/quiz_landing_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../core/models/users.dart';
+import '../../core/view_models/user_view_model.dart';
 
 class LeaderBoardScreen extends StatefulWidget {
-   LeaderBoardScreen({super.key});
+  const LeaderBoardScreen({super.key});
 
   @override
   State<LeaderBoardScreen> createState() => _LeaderBoardScreenState();
 }
 
-class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
+class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
+  late UserViewModels userViewModel;
+  late List<User> users;
+  late List<User> sortedUsers;
+
+  @override
+  void initState() {
+    super.initState();
+    userViewModel = context.read<UserViewModels>();
+    users = [
+      User(
+        name: 'Adem',
+        points: 920,
+      ),
+      User(
+        name: 'Mike',
+        points: 855,
+      ),
+      User(
+        name: 'John',
+        points: 700,
+      ),
+      User(
+        name: 'Sara',
+        points: 872,
+      ),
+      User(
+        name: 'Abdslem',
+        points: 841,
+      ),
+      User(
+        name: 'Kamel',
+        points: 436,
+      ),
+      User(
+        name: 'Simo',
+        points: 781,
+      ),
+      User(
+        name: 'Samir',
+        points: 699,
+      ),
+      User(
+        name: 'Jamel',
+        points: 752,
+      ),
+      User(
+        name: 'You',
+        points: userViewModel.getPoints,
+      ),
+    ];
+    users.sort((a, b) => a.points.compareTo(b.points) * -1);
+  }
+
   List<String> divisionNames = ['Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Master'];
   List<Color> divisionColors = [Colors.brown, Colors.grey, Colors.yellow, Colors.blue, Colors.teal, Colors.orange];
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+
+    return Scaffold(
       body: Column(
         children: [
-          Text('Division'),
+          const Text('Division', style: TextStyle(fontSize: 20)),
+          const SizedBox(height: 8),
           Container(
             height: 150,
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               itemCount: 6,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: EdgeInsets.only(right: 8.0), // Adjust the spacing here
+                  padding: const EdgeInsets.only(right: 8.0), // Adjust the spacing here
                   child: DivisionCard(
-                    divisionName: divisionNames[index],
+                    divisionName: Division.values[index].toString(),
                     color: divisionColors[index],
                   ),
                 );
               },
-            )
+            ),
           ),
-          Text('Leader Board'),
-          Text('Top 10'),
+          const Text('Leader Board'),
+          const Text('Top 10'),
           Stack(
             children: [
-
-              Container(
+              SizedBox(
                 height: 450,
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
-                  itemCount: 12,
+                  itemCount: 10,
                   itemBuilder: (context, index) {
-                    if (index == 3)
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    if (index == 2) {
+                      return Column(
                         children: [
-                          Text('Promotion zone',style: TextStyle(color: Colors.green),textAlign: TextAlign.center,),
-                          SizedBox(width: 10,),
-                          Icon(Icons.arrow_circle_up,color: Colors.green,),
+                          SizedBox(
+                            width: 350,
+                            child: Card(
+                              color: users[index].name == 'You' ? Colors.blueGrey : null,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(users[index].name),
+                                    Text(users[index].points.toString()),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Promotion zone',
+                                style: TextStyle(color: Colors.green),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                Icons.arrow_circle_up,
+                                color: Colors.green,
+                              ),
+                            ],
+                          )
                         ],
                       );
-                    if (index == 9)
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    }
+                    if (index == 6) {
+                      return Column(
                         children: [
-                          Text('Demotion zone',style: TextStyle(color: Colors.red),textAlign: TextAlign.center,),
-                          SizedBox(width: 10,),
-                          Icon(Icons.arrow_circle_down,color: Colors.red,),
+                          SizedBox(
+                            width: 350,
+                            child: Card(
+                              color: users[index].name == 'You' ? Colors.blueGrey : null,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(users[index].name),
+                                    Text(users[index].points.toString()),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Demotion zone',
+                                style: TextStyle(color: Colors.red),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                Icons.arrow_circle_down,
+                                color: Colors.red,
+                              ),
+                            ],
+                          )
                         ],
                       );
-                    return Container(
-                      width: 200,
-                      child: Card(
-                        child: Column(
-                          children: [
-                            Text('Student Name'),
-                            Text('Student Points'),
-                          ],
+                    }
+                    return Column(
+                      children: [
+                        SizedBox(
+                          width: 350,
+                          child: Card(
+                            color: users[index].name == 'You' ? Colors.blueGrey : null,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(users[index].name),
+                                  Text(users[index].points.toString()),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     );
                   },
                 ),
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  QuizLandingScreen()));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return QuizLandingScreen(
+                          userViewModel: userViewModel,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 370.0,left: 300),
+                  padding: const EdgeInsets.only(top: 370.0, left: 300),
                   child: Container(
                     width: 70,
                     height: 70,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.orangeAccent,
                     ),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.arrow_circle_up,color: Colors.white,),
-                        Text('Rank Up',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
+                        Icon(
+                          Icons.arrow_circle_up,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          'Rank Up',
+                          style: TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
                       ],
                     ),
-                    )
                   ),
+                ),
               ),
-
             ],
           ),
         ],
@@ -115,7 +257,7 @@ class DivisionCard extends StatelessWidget {
   final String divisionName;
   final Color color;
 
-  const DivisionCard({required this.divisionName, required this.color});
+  const DivisionCard({super.key, required this.divisionName, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -124,16 +266,18 @@ class DivisionCard extends StatelessWidget {
         Container(
           width: 50,
           height: 55,
-          padding: EdgeInsets.all(8),
-          decoration: divisionName == 'Gold'? BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.black,
-          ):null,
+          padding: const EdgeInsets.all(8),
+          decoration: divisionName == context.read<UserViewModels>().division.toString()
+              ? const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.black,
+                )
+              : null,
           child: ClipPath(
             clipper: HexagonClipper(),
             child: Container(
               color: color,
-              child: Center(
+              child: const Center(
                 child: Text(
                   '&',
                   style: TextStyle(color: Colors.white),
@@ -142,8 +286,8 @@ class DivisionCard extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8),
-        Text(divisionName),
+        const SizedBox(height: 8),
+        Text(divisionName.substring(9)),
       ],
     );
   }

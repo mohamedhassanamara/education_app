@@ -1,17 +1,15 @@
-import 'package:education_app/core/viewmodel/user_view_model.dart';
 import 'package:education_app/ui/shared/app_colors.dart';
 import 'package:education_app/ui/view/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+import 'core/view_models/points_view_model.dart';
+import 'core/view_models/user_view_model.dart';
 
-  runApp( MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => UserViewModels()),
-    ],
-    child: const MyApp(),
-  ),);
+void main() {
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -31,8 +29,17 @@ class MyApp extends StatelessWidget {
           background: AppColors.backgroundColor,
         ),
       ),
-      home: const MainScreen(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => PointsViewModel(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => UserViewModels(),
+          ),
+        ],
+        child: const MainScreen(),
+      ),
     );
   }
 }
-
