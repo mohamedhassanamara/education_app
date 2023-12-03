@@ -44,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
               style: TextStyles.subtitle,
             ),
             Text(
-              'Mahmoud',
+              'Bilel',
               style: TextStyles.title,
             ),
           ],

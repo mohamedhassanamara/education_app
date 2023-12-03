@@ -16,8 +16,8 @@ class _ChatScreenState extends State<ChatScreen> with SingleTickerProviderStateM
   ];
 
   final List<Map<String, String>> _otherChatMessages = [
-    {'sender': 'user', 'message': 'Hi there in other chat!'},
-    {'sender': 'other', 'message': 'Hello! How can I help you in other chat?'},
+    {'sender': 'user', 'message': 'Hi there in Chat bot!'},
+    {'sender': 'other', 'message': 'Hello! How can I help you ?'},
     // Add more messages as needed
   ];
 
@@ -37,15 +37,15 @@ class _ChatScreenState extends State<ChatScreen> with SingleTickerProviderStateM
           controller: _tabController,
           tabs: const [
             Tab(text: 'Class Chat'),
-            Tab(text: 'Other Chat'),
+            Tab(text: 'Chat BOT'),
           ],
         ),
       ),
       body: TabBarView(
         controller: _tabController,
         children: [
-          _buildChat(_classChatMessages),
-          _buildChat(_otherChatMessages),
+          _buildChat(_classChatMessages.reversed.toList()),
+          _buildChat(_otherChatMessages.reversed.toList()),
         ],
       ),
     );

@@ -92,6 +92,11 @@ class QuizResultScreen extends StatelessWidget {
             icon: Icon(Icons.emoji_events),
             label: 'Achievements',
           ),
+          NavigationDestination(
+            icon: Icon(Icons.chat_bubble),
+            label: 'Chat',
+          ),
+
         ],
         selectedIndex: 1,
         indicatorColor: Theme.of(context).colorScheme.primary,

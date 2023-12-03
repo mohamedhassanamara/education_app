@@ -89,7 +89,7 @@ class _SignUpState extends State<SignUp> {
                           height: 60,
                           onPressed: () {
                             // Navigate to the HomeScreen when the "Sign Up" button is pressed
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(builder: (context) => MainScreen()),
                             );
