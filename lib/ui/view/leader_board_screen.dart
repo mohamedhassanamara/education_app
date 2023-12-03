@@ -17,11 +17,8 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
   late UserViewModels userViewModel;
   late List<User> users;
   late List<User> sortedUsers;
-
-  @override
-  void initState() {
-    super.initState();
-    userViewModel = context.read<UserViewModels>();
+  loadUsers() async {
+    userViewModel = context.watch<UserViewModels>();
     users = [
       User(
         name: 'Adem',
@@ -66,13 +63,18 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
     ];
     users.sort((a, b) => a.points.compareTo(b.points) * -1);
   }
+  @override
+  void initState() {
+    super.initState();
+
+  }
 
   List<String> divisionNames = ['Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Master'];
   List<Color> divisionColors = [Colors.brown, Colors.grey, Colors.yellow, Colors.blue, Colors.teal, Colors.orange];
 
   @override
   Widget build(BuildContext context) {
-
+    loadUsers();
     return Scaffold(
       body: Column(
         children: [
