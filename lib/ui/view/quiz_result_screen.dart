@@ -1,6 +1,7 @@
 import 'package:education_app/core/view_models/user_view_model.dart';
 import 'package:education_app/ui/shared/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../shared/text_styles.dart';
 
 class QuizResultScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class QuizResultScreen extends StatelessWidget {
         ),
         actions: [
           Text(
-            '999',
+            userViewModel.getPoints.toString(),
             style: TextStyles.title,
           ),
           const SizedBox(
