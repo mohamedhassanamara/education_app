@@ -47,7 +47,7 @@ class QuizResultScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('You scored ${score} points'),
+            Text('You scored $score points'),
             GestureDetector(
               onTap: () {
                 userViewModel.addPoints(score);

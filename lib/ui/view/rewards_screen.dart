@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/viewmodel/user_view_model.dart';
+import '../../core/view_models/user_view_model.dart';
 
 class RewardsScreen extends StatefulWidget {
   const RewardsScreen({super.key});
@@ -11,7 +11,6 @@ class RewardsScreen extends StatefulWidget {
 }
 
 class _RewardsScreenState extends State<RewardsScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +49,10 @@ class _RewardsScreenState extends State<RewardsScreen> {
               const SizedBox(height: 20),
               const Text(
                 'Available Rewards',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               SizedBox(
                 height: 250,
@@ -59,20 +61,30 @@ class _RewardsScreenState extends State<RewardsScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        if(context.read<UserViewModels>().getPoints < 150) {
-                          showDialog(context: context, builder:
-                              (context) => const AlertDialog(
+                        if (context.read<UserViewModels>().getPoints < 150) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => const AlertDialog(
                               title: Text('Not enough points!'),
-                              content: Text('You need 150 points to claim this reward!')));
+                              content: Text(
+                                'You need 150 points to claim this reward!',
+                              ),
+                            ),
+                          );
                           return;
                         }
                         context.read<UserViewModels>().removePoints(150);
-                        showDialog(context: context, builder:
-                            (context) => const AlertDialog(
-                                title: Text('Reward Claimed!'),
-                                content: Text('You have claimed this reward! Your token is 123456789')));
+                        showDialog(
+                          context: context,
+                          builder: (context) => const AlertDialog(
+                            title: Text('Reward Claimed!'),
+                            content: Text(
+                              'You have claimed this reward! Your token is 123456789',
+                            ),
+                          ),
+                        );
                       },
-                      child: RewardCard(
+                      child: const RewardCard(
                         category: 'Food',
                         name: 'Delicious Meal',
                         price: '150 points',
@@ -81,20 +93,30 @@ class _RewardsScreenState extends State<RewardsScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        if(context.read<UserViewModels>().getPoints < 200) {
-                          showDialog(context: context, builder:
-                              (context) => const AlertDialog(
+                        if (context.read<UserViewModels>().getPoints < 200) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => const AlertDialog(
                               title: Text('Not enough points!'),
-                              content: Text('You need 200 points to claim this reward!')));
+                              content: Text(
+                                'You need 200 points to claim this reward!',
+                              ),
+                            ),
+                          );
                           return;
                         }
                         context.read<UserViewModels>().removePoints(200);
-                        showDialog(context: context, builder:
-                            (context) => const AlertDialog(
-                                title: Text('Reward Claimed!'),
-                                content: Text('You have claimed this reward! Your token is 123456789')));
+                        showDialog(
+                          context: context,
+                          builder: (context) => const AlertDialog(
+                            title: Text('Reward Claimed!'),
+                            content: Text(
+                              'You have claimed this reward! Your token is 123456789',
+                            ),
+                          ),
+                        );
                       },
-                      child: RewardCard(
+                      child: const RewardCard(
                         category: 'Clothes',
                         name: 'Stylish Shirt',
                         price: '200 points',
@@ -104,20 +126,30 @@ class _RewardsScreenState extends State<RewardsScreen> {
 
                     InkWell(
                       onTap: () {
-                        if(context.read<UserViewModels>().getPoints < 300) {
-                          showDialog(context: context, builder:
-                              (context) => const AlertDialog(
+                        if (context.read<UserViewModels>().getPoints < 300) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => const AlertDialog(
                               title: Text('Not enough points!'),
-                              content: Text('You need 300 points to claim this reward!')));
+                              content: Text(
+                                'You need 300 points to claim this reward!',
+                              ),
+                            ),
+                          );
                           return;
                         }
                         context.read<UserViewModels>().removePoints(300);
-                        showDialog(context: context, builder:
-                            (context) => const AlertDialog(
-                                title: Text('Reward Claimed!'),
-                                content: Text('You have claimed this reward! Your token is 123456789')));
+                        showDialog(
+                          context: context,
+                          builder: (context) => const AlertDialog(
+                            title: Text('Reward Claimed!'),
+                            content: Text(
+                              'You have claimed this reward! Your token is 123456789',
+                            ),
+                          ),
+                        );
                       },
-                      child: RewardCard(
+                      child: const RewardCard(
                         category: 'Tech Upgrade',
                         name: 'Laptop Accessories Bundle',
                         price: '600 points',
@@ -126,20 +158,30 @@ class _RewardsScreenState extends State<RewardsScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        if(context.read<UserViewModels>().getPoints < 500) {
-                          showDialog(context: context, builder:
-                              (context) => const AlertDialog(
+                        if (context.read<UserViewModels>().getPoints < 500) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => const AlertDialog(
                               title: Text('Not enough points!'),
-                              content: Text('You need 500 points to claim this reward!')));
+                              content: Text(
+                                'You need 500 points to claim this reward!',
+                              ),
+                            ),
+                          );
                           return;
                         }
                         context.read<UserViewModels>().removePoints(500);
-                        showDialog(context: context, builder:
-                            (context) => const AlertDialog(
-                                title: Text('Reward Claimed!'),
-                                content: Text('You have claimed this reward! Your token is 123456789')));
+                        showDialog(
+                          context: context,
+                          builder: (context) => const AlertDialog(
+                            title: Text('Reward Claimed!'),
+                            content: Text(
+                              'You have claimed this reward! Your token is 123456789',
+                            ),
+                          ),
+                        );
                       },
-                      child: RewardCard(
+                      child: const RewardCard(
                         category: 'Gaming Gear',
                         name: 'High-Performance Headset',
                         price: '500 points',
@@ -154,10 +196,16 @@ class _RewardsScreenState extends State<RewardsScreen> {
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Featured Reward of the Month', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                        Text(
+                          'Featured Reward of the Month',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         RewardCard(
                           category: 'Special Feature',
                           name: 'Exclusive Item',
@@ -176,13 +224,15 @@ class _RewardsScreenState extends State<RewardsScreen> {
     );
   }
 }
+
 class RewardCard extends StatelessWidget {
   final String category;
   final String name;
   final String price;
   final String imagePath;
 
-  RewardCard({
+  const RewardCard({
+    super.key,
     required this.category,
     required this.name,
     required this.price,
@@ -217,9 +267,26 @@ class RewardCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(category, style: const TextStyle(color: Colors.blue)),
-                  Text(name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  Text(price, style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                  Text(
+                    category,
+                    style: const TextStyle(
+                      color: Colors.blue,
+                    ),
+                  ),
+                  Text(
+                    name,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    price,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
+                  ),
                 ],
               ),
             ),
