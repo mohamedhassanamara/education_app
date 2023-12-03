@@ -1,15 +1,16 @@
+import 'package:education_app/core/view_models/user_view_model.dart';
 import 'package:education_app/ui/shared/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import '../shared/text_styles.dart';
 
 class QuizResultScreen extends StatelessWidget {
   final int score;
-  const QuizResultScreen({Key? key, required this.score}) : super(key: key);
+  final UserViewModels userViewModel;
+  const QuizResultScreen({Key? key, required this.score, required this.userViewModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.secondary,
         leading: GestureDetector(
@@ -27,16 +28,18 @@ class QuizResultScreen extends StatelessWidget {
           'Quiz Result',
           style: TextStyles.title,
         ),
-        actions: [ Text(
-          '999',
-          style: TextStyles.title,
-        ),
-          const SizedBox(width: 10,),
+        actions: [
+          Text(
+            '999',
+            style: TextStyles.title,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
           const Icon(
             Icons.stars_rounded,
             color: Colors.yellow,
           ),
-
         ],
       ),
       body: Center(
@@ -44,9 +47,10 @@ class QuizResultScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('You scored $score points'),
+            Text('You scored ${score} points'),
             GestureDetector(
               onTap: () {
+                userViewModel.addPoints(score);
                 Navigator.pop(context);
                 Navigator.pop(context);
                 Navigator.pop(context);
@@ -58,9 +62,14 @@ class QuizResultScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.primaryColor,
                 ),
-                child: Center(child: Text('Go back',style: TextStyle(color: Colors.white),)),
-              ),),
-
+                child: const Center(
+                  child: Text(
+                    'Go back',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
