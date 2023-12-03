@@ -1,5 +1,7 @@
 import 'package:education_app/ui/shared/app_colors.dart';
+import 'package:education_app/ui/view/home_screen.dart';
 import 'package:education_app/ui/view/main_screen.dart';
+import 'package:education_app/ui/view/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
           background: AppColors.backgroundColor,
         ),
       ),
-      home: const MainScreen(),
+      home: SignUp(),
     );
   }
 }
