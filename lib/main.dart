@@ -9,7 +9,18 @@ import 'core/view_models/user_view_model.dart';
 
 void main() {
   runApp(
-    const MyApp(),
+    /// Providers are above [MyApp] instead of inside it, so that tests
+    /// can use [MyApp] while mocking the providers
+    MultiProvider(
+      providers: [ChangeNotifierProvider(
+        create: (context) => PointsViewModel(),
+      ),
+        ChangeNotifierProvider(
+          create: (context) => UserViewModels(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -31,6 +42,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: SignUp(),
+
     );
   }
 }
