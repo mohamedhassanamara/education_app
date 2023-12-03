@@ -1,9 +1,17 @@
+import 'package:education_app/core/viewmodel/user_view_model.dart';
 import 'package:education_app/ui/shared/app_colors.dart';
 import 'package:education_app/ui/view/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+
+  runApp( MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => UserViewModels()),
+    ],
+    child: const MyApp(),
+  ),);
 }
 
 class MyApp extends StatelessWidget {
