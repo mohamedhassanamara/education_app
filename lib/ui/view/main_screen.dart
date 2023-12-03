@@ -1,3 +1,4 @@
+import 'package:education_app/ui/view/chat_screen.dart';
 import 'package:education_app/ui/view/rewards_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,7 @@ class _MainScreenState extends State<MainScreen> {
     const LeaderBoardScreen(),
     const RewardsScreen(),
     AchievementsScreen(),
+    ChatScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -35,15 +37,15 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Hello',
               style: TextStyles.subtitle,
             ),
             Text(
-              'Abdslem yajour',
-              style: TextStyles.subtitle,
+              'Mahmoud',
+              style: TextStyles.title,
             ),
           ],
         ),
@@ -78,7 +80,11 @@ class _MainScreenState extends State<MainScreen> {
           ),
           NavigationDestination(
             icon: Icon(Icons.emoji_events),
-            label: 'Achievements',
+            label: 'Attainments',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.chat_bubble),
+            label: 'Chat',
           ),
         ],
         selectedIndex: selectedIndex,
