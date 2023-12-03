@@ -78,10 +78,10 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
     return Scaffold(
       body: Column(
         children: [
-          const Text('Division', style: TextStyle(fontSize: 20)),
+          const Text('Division', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
           Container(
-            height: 150,
+            height: 100,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -98,8 +98,8 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
               },
             ),
           ),
-          const Text('Leader Board'),
-          const Text('Top 10'),
+          const Text('Leader Board', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          const Text('Top 10', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           Stack(
             children: [
               SizedBox(
@@ -120,8 +120,8 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(users[index].name),
-                                    Text(users[index].points.toString()),
+                                    Text(users[index].name,style: TextStyle(fontSize: 20),),
+                                    Text(users[index].points.toString(),style: TextStyle(fontSize: 20),),
                                   ],
                                 ),
                               ),
@@ -159,8 +159,8 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(users[index].name),
-                                    Text(users[index].points.toString()),
+                                    Text(users[index].name,style: TextStyle(fontSize: 20),),
+                                    Text(users[index].points.toString(),style: TextStyle(fontSize: 20), ),
                                   ],
                                 ),
                               ),
@@ -197,8 +197,8 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(users[index].name),
-                                  Text(users[index].points.toString()),
+                                  Text(users[index].name,style: TextStyle(fontSize: 20),),
+                                  Text(users[index].points.toString(),style: TextStyle(fontSize: 20),),
                                 ],
                               ),
                             ),
@@ -226,9 +226,9 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen>{
                   child: Container(
                     width: 70,
                     height: 70,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.orangeAccent,
+                      color: Colors.orangeAccent.withOpacity(0.775),
                     ),
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
