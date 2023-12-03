@@ -233,8 +233,8 @@ class _RewardsScreenState extends State<RewardsScreen> {
                             );
                           },
                           child: const RewardCard(
-                            category: 'Special Feature',
-                            name: 'Exclusive Item',
+                            category: 'Special Course',
+                            name: 'Advanced Flutter Course',
                             price: '1000 points',
                             imagePath: 'assets/60.png',
                           ),
@@ -323,3 +323,4 @@ class RewardCard extends StatelessWidget {
     );
   }
 }
+
