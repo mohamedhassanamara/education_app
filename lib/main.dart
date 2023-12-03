@@ -1,5 +1,6 @@
 import 'package:education_app/ui/shared/app_colors.dart';
 import 'package:education_app/ui/view/main_screen.dart';
+import 'package:education_app/ui/view/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,17 +30,7 @@ class MyApp extends StatelessWidget {
           background: AppColors.backgroundColor,
         ),
       ),
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => PointsViewModel(),
-          ),
-          ChangeNotifierProvider(
-            create: (context) => UserViewModels(),
-          ),
-        ],
-        child: const MainScreen(),
-      ),
+      home: SignUp(),
     );
   }
 }
